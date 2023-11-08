@@ -1,0 +1,14 @@
+<h1>TODO List</h1>
+
+<% @todos.each_with_index do |task, index| %>
+  <p>
+    <%= index + 1 %>.
+    <%= task.name %> -
+    <%= task.description %>
+    <%= link_to 'Edit', edit_todo_path(task) %> |
+    <%= link_to "Destroy", todo_path(task), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
+  </p>
+<% end %>
+
+<%= link_to 'New Task', new_todo_path %>
+
