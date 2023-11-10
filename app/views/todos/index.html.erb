@@ -1,14 +1,28 @@
-<h1>TODO List</h1>
+<div class="container mt-5">
+  <%= render 'authentication' %>
 
-<% @todos.each_with_index do |task, index| %>
-  <p>
-    <%= index + 1 %>.
-    <%= task.name %> -
-    <%= task.description %>
-    <%= link_to 'Edit', edit_todo_path(task) %> |
-    <%= link_to "Destroy", todo_path(task), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
-  </p>
-<% end %>
+  <h1>TODO List</h1>
 
-<%= link_to 'New Task', new_todo_path %>
+  <% if @todos.any? %>
+    <% @todos.each_with_index do |task, index| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= index + 1 %>. <%= task.name %>
+          </h5>
+          <p class="card-text">
+            <%= task.description %>
+          </p>
+          <%= link_to 'Edit', edit_todo_path(task), class: 'btn btn-warning btn-sm me-2' %>
+          <%= link_to 'Delete', todo_path(task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-info" role="alert">
+      There are no tasks.
+    </div>
+  <% end %>
 
+  <%= link_to 'New Task', new_todo_path, class: 'btn btn-primary' %>
+</div>

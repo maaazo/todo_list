@@ -2,6 +2,12 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
+# cssbundling-rails is a CSS bundling solution for Rails
+gem "cssbundling-rails"
+
+# devise is a flexible authentication solution
+gem "devise"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
 
@@ -18,7 +24,7 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", '~> 1.0.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
